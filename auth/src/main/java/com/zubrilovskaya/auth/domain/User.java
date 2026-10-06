@@ -6,8 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.Instant;
 import java.time.LocalDate;
-import java.time.OffsetDateTime;
 
 @Entity
 @Table(name = "users")
@@ -26,24 +26,24 @@ public class User {
 
     private String surname;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "gender_id", nullable = false)
-    private Short genderId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "gender_id")
+    private Gender genderId;
 
     @Column(unique = true, nullable = false)
     private String email;
 
-    @Column(name = "password_hash", unique = true, nullable = false)
+    @Column(name = "password_hash", nullable = false)
     private String passwordHash;
 
     private LocalDate birthday;
 
     @Column(name = "created_at", nullable = false, columnDefinition = "TIMESTAMPTZ DEFAULT now()")
-    private OffsetDateTime createdAt;
+    private Instant createdAt;
 
     @Column(name = "updated_at", nullable = false, columnDefinition = "TIMESTAMPTZ DEFAULT now()")
-    private OffsetDateTime updatedAt;
+    private Instant updatedAt;
 
     @Column(name = "last_login_at", nullable = false, columnDefinition = "TIMESTAMPTZ DEFAULT now()")
-    private OffsetDateTime lastLoginAt;
+    private Instant lastLoginAt;
 }

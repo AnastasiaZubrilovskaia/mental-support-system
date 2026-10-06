@@ -1,3 +1,29 @@
+server:
+  port: 8081
+
 spring:
   application:
-    name: auth
+    name: auth-service
+  datasource:
+    url: jdbc:postgresql://localhost:5432/auth
+    username: auth
+    password: auth
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+    properties:
+      hibernate.jdbc.time_zone: UTC
+  flyway:
+    enabled: true
+
+app:
+  jwt:
+    issuer: psych-support-auth
+    access-ttl: 15m
+    private-key-path: ${JWT_PRIVATE_KEY_PATH:./secrets/jwt_private.pem}
+  session:
+    refresh-ttl: 30d
+  cookie:
+    secure: ${COOKIE_SECURE:true}
+    same-site: Strict

@@ -16,7 +16,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class TypeOfDevices {
+public class DeviceType {
     @Id
     private Short id;
 

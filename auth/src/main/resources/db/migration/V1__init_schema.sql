@@ -21,13 +21,12 @@ CREATE TABLE users (
     last_login_at  TIMESTAMPTZ  NOT NULL DEFAULT now()
 );
 
-CREATE UNIQUE INDEX ux_users_email         ON users (lower(email));
 CREATE INDEX        ix_users_last_login_at ON users (last_login_at);
 
 CREATE TABLE sessions (
     id                  BIGINT       GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     user_id             BIGINT       NOT NULL REFERENCES users (id) ON DELETE CASCADE,
-    refresh_token_hash  CHAR(64)     NOT NULL UNIQUE,
+    refresh_token_hash  VARCHAR(64)     NOT NULL UNIQUE,
     device_label        VARCHAR(100),
     device_type_id      SMALLINT     REFERENCES types_of_devices (id),
     created_at          TIMESTAMPTZ  NOT NULL DEFAULT now(),
