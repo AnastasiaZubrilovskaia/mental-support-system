@@ -27,3 +27,6 @@ app:
   cookie:
     secure: ${COOKIE_SECURE:true}
     same-site: Strict
+  admin:
+    email: ${ADMIN_EMAIL:}
+    password: ${ADMIN_PASSWORD:}

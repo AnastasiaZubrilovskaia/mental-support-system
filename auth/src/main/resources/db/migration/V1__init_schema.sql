@@ -16,6 +16,7 @@ CREATE TABLE users (
     email          VARCHAR(254) NOT NULL UNIQUE,
     password_hash  VARCHAR(100) NOT NULL,
     birthday       DATE,
+    is_admin       BOOLEAN      NOT NULL DEFAULT false,
     created_at     TIMESTAMPTZ  NOT NULL DEFAULT now(),
     updated_at     TIMESTAMPTZ  NOT NULL DEFAULT now(),
     last_login_at  TIMESTAMPTZ  NOT NULL DEFAULT now()
