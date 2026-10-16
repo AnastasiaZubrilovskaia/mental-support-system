@@ -14,18 +14,18 @@ import java.time.LocalDate;
 @Setter
 @NoArgsConstructor
 public class RegisterRequest {
-    @NotBlank(message = "Name is required")
+    @NotBlank(message = "Имя обязательно для заполнения")
     private String name;
 
     private String surname;
     private Short genderId;
 
-    @NotBlank(message = "Login (email) is required")
+    @NotBlank(message = "Логин (email) обязателен для заполнения")
     @Email(message = "Некорректный email")
     private String email;
 
-    @NotBlank(message = "Password is required")
-    @Size(min = 6, message = "Password must be at least 6 characters long")
+    @NotBlank(message = "Пароль обязателен для заполнения")
+    @Size(min = 6, max = 26, message = "Пароль должен быть от 6 до 26 символов")
     private String password;
 
     @Past(message = "Дата рождения должна быть в прошлом")

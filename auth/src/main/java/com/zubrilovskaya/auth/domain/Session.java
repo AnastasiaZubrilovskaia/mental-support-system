@@ -21,7 +21,7 @@ public class Session {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
-    private User userId;
+    private User user;
 
     @Column(name = "refresh_token_hash", nullable = false, unique = true)
     private String refreshTokenHash;
@@ -31,7 +31,7 @@ public class Session {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "device_type_id")
-    private DeviceType deviceTypeId;
+    private DeviceType deviceType;
 
     @Column(name = "created_at", nullable = false, columnDefinition = "TIMESTAMPTZ DEFAULT now()")
     private Instant createdAt;

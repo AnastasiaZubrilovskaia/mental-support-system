@@ -27,7 +27,7 @@ public class User {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "gender_id")
-    private Gender genderId;
+    private Gender gender;
 
     @Column(unique = true, nullable = false)
     private String email;
