@@ -22,7 +22,6 @@ import java.util.List;
 @RequiredArgsConstructor
 public class UserService {
     private final UserRepository userRepository;
-    private final GenderRepository genderRepository;
     private final SessionService sessionService;
     private final PasswordEncoder passwordEncoder;
 
