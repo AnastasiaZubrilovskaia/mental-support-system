@@ -33,13 +33,23 @@ public class Session {
     @JoinColumn(name = "device_type_id")
     private DeviceType deviceType;
 
-    @Column(name = "created_at", nullable = false, columnDefinition = "TIMESTAMPTZ DEFAULT now()")
+    @Column(name = "created_at", nullable = false)
     private Instant createdAt;
 
     @Column(name = "expires_at", nullable = false)
     private Instant expiresAt;
 
-    @Column(name = "last_used_at", columnDefinition = "TIMESTAMPTZ DEFAULT now()")
+    @Column(name = "last_used_at")
     private Instant lastUsedAt;
 
+    @PrePersist
+    void prePersist() {
+        Instant now = Instant.now();
+        if (createdAt == null) {
+            createdAt = now;
+        }
+        if (lastUsedAt == null) {
+            lastUsedAt = now;
+        }
+    }
 }

@@ -25,12 +25,14 @@ public class UserService {
     private final SessionService sessionService;
     private final PasswordEncoder passwordEncoder;
 
+    @Transactional(readOnly = true)
     public UserResponse getUserById(Long id) {
         User user = userRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException("Пользователь с данным id не найден"));
         return toResponse(user);
     }
 
+    @Transactional(readOnly = true)
     public List<UserResponse> getAllUsers() {
         List<UserResponse> users = userRepository.findAll().stream()
                 .map(this::toResponse)
@@ -136,7 +138,7 @@ public class UserService {
                 .surname(user.getSurname())
                 .email(user.getEmail())
                 .birthday(user.getBirthday())
-                .gender(user.getGender().getName())
+                .gender(user.getGender() == null ? null : user.getGender().getName())
                 .isAdmin(user.isAdmin())
                 .lastLoginAt(user.getLastLoginAt())
                 .build();
