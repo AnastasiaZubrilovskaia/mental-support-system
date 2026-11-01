@@ -1,0 +1,15 @@
+services:
+  mongo:
+    image: mongo:8.0
+    container_name: psych-mongo
+    env_file:
+      - ./business/.env
+      - ./business/mongo/root.env
+    volumes:
+      - mongo-data:/data/db
+      - ./business/mongo/init.js:/docker-entrypoint-initdb.d/init.js:ro
+    ports:
+      - "127.0.0.1:27017:27017"   # только для разработки
+
+volumes:
+  mongo-data:
