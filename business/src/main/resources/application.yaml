@@ -1,6 +1,10 @@
 server:
   port: 8082
 
+app:
+  encryption:
+    key: ${ENCRYPTION_KEY}
+
 spring:
   application:
     name: business
@@ -18,3 +22,10 @@ spring:
       resourceserver:
         jwt:
           public-key-location: ${JWT_PUBLIC_KEY_LOCATION}
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health

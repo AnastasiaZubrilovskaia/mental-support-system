@@ -58,7 +58,7 @@ create("biometrics", {
 create("calendar_daily_stats", {
   bsonType: "object",
   required: ["userId", "date", "provider", "meetingsCount", "meetingsMinutes",
-             "tasksCompleted", "tasksOverdue", "collectedAt],
+             "tasksCompleted", "tasksOverdue", "collectedAt"],
   properties: {
     userId:          { bsonType: "long" }, //владелец данных
     date:            { bsonType: "string", pattern: datePattern }, //какой день описывает запись
