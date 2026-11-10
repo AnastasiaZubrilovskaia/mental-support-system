@@ -71,7 +71,7 @@ public class DiaryService {
         String toKey = to == null ? "9999-12-31" : to.toString();
 
         return repository
-                .findByUserIdAndDateGreaterThanEqualAndDateLessThanEqualOrderByDateDesc(userId, fromKey, toKey)
+                .findByUserIdAndDateBetween(userId, fromKey, toKey)
                 .stream()
                 .map(this::toResponse)
                 .toList();
