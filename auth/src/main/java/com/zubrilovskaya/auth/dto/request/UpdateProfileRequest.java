@@ -15,6 +15,8 @@ public class UpdateProfileRequest {
 
     private String surname;
 
+    private Short genderId;
+
     @Past(message = "Дата рождения должна быть в прошлом")
     private LocalDate birthday;
 }

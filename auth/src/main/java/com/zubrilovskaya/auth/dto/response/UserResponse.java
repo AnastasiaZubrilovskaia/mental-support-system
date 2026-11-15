@@ -17,6 +17,7 @@ public class UserResponse {
     private String email;
     private LocalDate birthday;
     private boolean isAdmin;
+    private Short genderId;
     private String gender;
     private Instant lastLoginAt;
 }

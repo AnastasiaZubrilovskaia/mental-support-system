@@ -1,5 +1,6 @@
 package com.zubrilovskaya.auth.service;
 
+import com.zubrilovskaya.auth.domain.Gender;
 import com.zubrilovskaya.auth.domain.User;
 import com.zubrilovskaya.auth.dto.request.ChangeEmailRequest;
 import com.zubrilovskaya.auth.dto.request.ChangePasswordRequest;
@@ -22,6 +23,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class UserService {
     private final UserRepository userRepository;
+    private final GenderRepository genderRepository;
     private final SessionService sessionService;
     private final PasswordEncoder passwordEncoder;
 
@@ -54,6 +56,11 @@ public class UserService {
         }
         if (request.getSurname() != null) {
             user.setSurname(request.getSurname());
+        }
+        if (request.getGenderId() != null) {
+            Gender gender = genderRepository.findById(request.getGenderId())
+                    .orElseThrow(() -> new NotFoundException("Пол не найден"));
+            user.setGender(gender);
         }
         if (request.getBirthday() != null) {
             user.setBirthday(request.getBirthday());
@@ -138,6 +145,7 @@ public class UserService {
                 .surname(user.getSurname())
                 .email(user.getEmail())
                 .birthday(user.getBirthday())
+                .genderId(user.getGender() == null ? null : user.getGender().getId())
                 .gender(user.getGender() == null ? null : user.getGender().getName())
                 .isAdmin(user.isAdmin())
                 .lastLoginAt(user.getLastLoginAt())
