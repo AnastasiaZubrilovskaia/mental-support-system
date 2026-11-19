@@ -2,7 +2,7 @@ import { useId } from 'react'
 import { APP_NAME } from '../config.js'
 import { cx } from './ui.jsx'
 
-/** Знак: круги на воде от опущенной глубиномерной лини. */
+/** Знак: градиентная спираль на воде. */
 export function LogoMark({ size = 36, variant = 'color', className }) {
   const gradientId = `fathom-${useId().replace(/:/g, '')}`
 
@@ -19,19 +19,23 @@ export function LogoMark({ size = 36, variant = 'color', className }) {
       <defs>
         <linearGradient id={gradientId} x1="6" y1="4" x2="42" y2="44" gradientUnits="userSpaceOnUse">
           <stop stopColor="#38bdf8" />
-          <stop offset="0.55" stopColor="#2563eb" />
-          <stop offset="1" stopColor="#4f46e5" />
+          <stop offset="0.52" stopColor="#2563eb" />
+          <stop offset="1" stopColor="#6366f1" />
         </linearGradient>
       </defs>
       {variant === 'light' ? (
         <rect width="48" height="48" rx="14" fill="white" fillOpacity="0.2" />
       ) : (
-        <rect width="48" height="48" rx="14" fill={`url(#${gradientId})`} />
+        <rect width="48" height="48" rx="14" fill="#eff6ff" />
       )}
-      <circle cx="24" cy="24" r="19" stroke="white" strokeOpacity="0.3" strokeWidth="2.5" />
-      <circle cx="24" cy="24" r="13" stroke="white" strokeOpacity="0.6" strokeWidth="2.5" />
-      <circle cx="24" cy="24" r="7" stroke="white" strokeOpacity="0.95" strokeWidth="2.5" />
-      <circle cx="24" cy="24" r="2.6" fill="white" />
+      <path
+        d="M24 24c0-3.4 4.5-4.4 6.8-1.8 3 3.4.4 9.1-4.3 10.1-6.8 1.5-12.5-4.4-11.2-11.2 1.5-8 10-12.6 17.5-9.1 8.8 4.1 11.2 15.2 5.1 22.5-6.8 8.1-19.8 7.6-25.8-.9"
+        fill="none"
+        stroke={variant === 'light' ? 'white' : `url(#${gradientId})`}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="3.5"
+      />
     </svg>
   )
 }

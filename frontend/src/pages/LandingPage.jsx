@@ -2,12 +2,10 @@ import {
   ArrowRight,
   CalendarDays,
   Check,
-  Lock,
   Moon,
   NotebookPen,
   ShieldCheck,
   Sparkles,
-  Trash2,
   TrendingUp,
   Watch,
 } from 'lucide-react'
@@ -34,7 +32,7 @@ function Header() {
 
         <div className="flex items-center gap-2">
           <Link to="/login" className={buttonClass('ghost')}>Войти</Link>
-          <Link to="/register" className={buttonClass('primary')}>Начать</Link>
+          <Link to="/register" className={buttonClass('primary')}>Зарегистрироваться</Link>
         </div>
       </div>
     </header>
