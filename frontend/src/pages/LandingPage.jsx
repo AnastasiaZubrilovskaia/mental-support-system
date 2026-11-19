@@ -12,6 +12,7 @@ import {
 import { Link } from 'react-router'
 import Logo from '../components/Logo.jsx'
 import { buttonClass, cx } from '../components/ui.jsx'
+import Waves, { WaveEdge } from '../components/Waves.jsx'
 import { APP_NAME } from '../config.js'
 
 /* ---------- Шапка ---------- */
@@ -57,9 +58,7 @@ function PreviewStat({ icon: Icon, label, value, tone }) {
 function HeroPreview() {
   return (
     <div className="relative">
-      <div className="absolute -inset-6 rounded-[2.5rem] bg-linear-to-br from-sky-200/60 via-blue-200/40 to-indigo-200/60 blur-2xl" />
-
-      <div className="relative rounded-3xl border border-white/70 bg-white/85 p-5 shadow-2xl shadow-sky-900/10 backdrop-blur-md lg:p-6 xl:p-7">
+      <div className="relative rounded-3xl border border-sky-100 bg-white/85 p-5 backdrop-blur-sm lg:p-6 xl:p-7">
         <div className="flex items-center justify-between">
           <div>
             <p className="text-sm font-semibold text-slate-900">Ваша неделя</p>
@@ -107,7 +106,8 @@ function Hero() {
   const points = ['Записи дневника шифруются', 'Без диагнозов и ярлыков', 'Аккаунт можно удалить']
 
   return (
-    <section className="relative overflow-hidden">
+    <section className="relative isolate overflow-hidden">
+      <Waves className="-z-10 h-40 mask-[linear-gradient(to_bottom,black_45%,transparent)] sm:h-56" />
       <div className="mx-auto grid max-w-7xl items-center gap-14 px-4 pb-16 pt-12 lg:gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:pb-24 lg:pt-20 xl:gap-14">
         <div>
           <span className="inline-flex items-center gap-2 rounded-full border border-sky-200 bg-white/70 px-3.5 py-1.5 text-sm font-medium text-sky-700">
@@ -174,7 +174,7 @@ function Idea() {
 
       <div className="mt-10 grid gap-4 md:grid-cols-3">
         {sources.map(({ icon: Icon, title, text, tone }) => (
-          <div key={title} className="rounded-2xl border border-white/70 bg-white/80 p-6 text-center shadow-lg shadow-sky-900/5 backdrop-blur-md">
+          <div key={title} className="rounded-2xl border border-sky-100 bg-white/80 p-6 text-center">
             <span className={cx('mx-auto flex h-12 w-12 items-center justify-center rounded-2xl', tone)}>
               <Icon className="h-6 w-6" />
             </span>
@@ -210,14 +210,16 @@ const steps = [
 
 function HowItWorks() {
   return (
-    <section id="how" className="scroll-mt-20 bg-white/50 py-16 backdrop-blur-sm">
+    <section id="how" className="relative scroll-mt-28 bg-white/60 py-16">
+      <WaveEdge side="top" className="text-white/60" />
+      <WaveEdge side="bottom" className="text-white/60" />
       <div className="mx-auto max-w-7xl px-4">
         <h2 className="text-center text-3xl font-bold text-slate-900 sm:text-4xl">Как это работает</h2>
 
         <div className="mt-12 grid gap-8 md:grid-cols-3">
           {steps.map((step, index) => (
             <div key={step.title} className="relative">
-              <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-linear-to-br from-sky-500 to-blue-600 text-xl font-bold text-white shadow-lg shadow-sky-500/30">
+              <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-sky-600 text-xl font-bold text-white">
                 {index + 1}
               </span>
               <h3 className="mt-5 text-xl font-semibold text-slate-900">{step.title}</h3>
@@ -282,8 +284,8 @@ function Features() {
           <div
             key={title}
             className={cx(
-              'rounded-2xl border bg-white/80 p-6 shadow-lg shadow-sky-900/5 backdrop-blur-md',
-              soon ? 'border-dashed border-slate-200' : 'border-white/70',
+              'rounded-2xl border bg-white/80 p-6',
+              soon ? 'border-dashed border-slate-200' : 'border-sky-100',
             )}
           >
             <div className="flex items-center justify-between">
@@ -307,8 +309,10 @@ function Features() {
 
 function Privacy() {
   return (
-    <section id="privacy" className="scroll-mt-20 bg-white/50 py-16 backdrop-blur-sm">
-      <div className="mx-auto grid max-w-7xl items-center gap-10 px-4 lg:grid-cols-2">
+    <section id="privacy" className="relative scroll-mt-28 bg-white/60 py-16">
+      <WaveEdge side="top" className="text-white/60" />
+      <WaveEdge side="bottom" className="text-white/60" />
+      <div className="mx-auto max-w-2xl text-center">
         <div>
           <h2 className="text-3xl font-bold text-slate-900 sm:text-4xl">Ваши данные остаются вашими</h2>
           <p className="mt-4 text-lg text-slate-600">
@@ -326,10 +330,8 @@ function Privacy() {
 function FinalCta() {
   return (
     <section className="px-4 py-16">
-      <div className="relative mx-auto max-w-7xl overflow-hidden rounded-3xl bg-linear-to-br from-sky-500 via-blue-600 to-indigo-700 px-8 py-14 text-center text-white shadow-2xl shadow-blue-900/20">
-        <div className="absolute -right-24 -top-24 h-72 w-72 rounded-full border border-white/15" />
-        <div className="absolute -right-10 -top-10 h-44 w-44 rounded-full border border-white/20" />
-        <div className="absolute -bottom-28 -left-20 h-80 w-80 rounded-full border border-white/15" />
+      <div className="relative mx-auto max-w-7xl overflow-hidden rounded-3xl bg-linear-to-b bg-sky-600 px-8 py-14 text-center text-white">
+        <Waves tone="light" className="h-32 sm:h-40" />
 
         <div className="relative">
           <h2 className="text-3xl font-bold sm:text-4xl">Начните с одной записи сегодня</h2>
@@ -339,7 +341,7 @@ function FinalCta() {
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <Link
               to="/register"
-              className="inline-flex items-center justify-center gap-2 rounded-xl bg-white px-6 py-3 text-base font-semibold text-blue-700 shadow-lg transition hover:bg-sky-50"
+              className="inline-flex items-center justify-center gap-2 rounded-xl bg-white px-6 py-3 text-base font-semibold text-blue-700 transition hover:bg-sky-50"
             >
               Создать аккаунт
               <ArrowRight className="h-4 w-4" />

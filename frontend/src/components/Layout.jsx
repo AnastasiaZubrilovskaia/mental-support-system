@@ -2,6 +2,7 @@ import { House, LogOut, NotebookPen, UserRound } from 'lucide-react'
 import {Link, NavLink, Outlet } from 'react-router'
 import { useAuth } from '../context/AuthContext.jsx'
 import Logo from './Logo.jsx'
+import Waves from './Waves.jsx'
 import { cx } from './ui.jsx'
 
 const links = [
@@ -15,7 +16,8 @@ export default function Layout() {
   const initial = user.name?.[0]?.toUpperCase() ?? '?'
 
   return (
-    <div className="min-h-screen">
+    <div className="relative isolate min-h-screen">
+      <Waves className="fixed! -z-10 h-48 sm:h-64" />
       <header className="sticky top-0 z-20 border-b border-white/60 bg-white/70 backdrop-blur-md">
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4">
           <Link to="/dashboard">

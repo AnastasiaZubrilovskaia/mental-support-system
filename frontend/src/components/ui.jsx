@@ -7,7 +7,7 @@ const buttonBase =
 
 const variants = {
   primary:
-    'bg-linear-to-r from-sky-500 to-blue-600 text-white shadow-lg shadow-sky-500/25 hover:from-sky-600 hover:to-blue-700',
+    'bg-sky-600 text-white hover:bg-sky-700',
   secondary: 'border border-slate-200 bg-white text-slate-700 hover:bg-slate-50',
   danger: 'bg-rose-600 text-white hover:bg-rose-700',
   ghost: 'text-slate-600 hover:bg-slate-100',
@@ -29,7 +29,7 @@ export function Card({ className, children }) {
   return (
     <section
       className={cx(
-        'rounded-2xl border border-white/70 bg-white/80 p-6 shadow-xl shadow-sky-900/5 backdrop-blur-md',
+        'rounded-2xl border border-sky-100 bg-white/80 p-6 backdrop-blur-sm',
         className,
       )}
     >
@@ -40,7 +40,7 @@ export function Card({ className, children }) {
 
 export const inputClass = (invalid) =>
   cx(
-    'block w-full rounded-xl border bg-white px-3.5 py-2.5 text-sm text-slate-900 shadow-sm outline-hidden transition placeholder:text-slate-400 focus:ring-2',
+    'block w-full rounded-xl border bg-white px-3.5 py-2.5 text-sm text-slate-900 outline-hidden transition placeholder:text-slate-400 focus:ring-2',
     invalid
       ? 'border-rose-300 focus:border-rose-400 focus:ring-rose-200'
       : 'border-slate-200 focus:border-sky-400 focus:ring-sky-200',
